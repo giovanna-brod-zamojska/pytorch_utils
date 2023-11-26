@@ -24,7 +24,7 @@ def download_data(data_folder_name:  str,
     image_path.mkdir(parents=True, exist_ok=True )
 
   with open(data_path / f'{data_folder_name}.zip', 'wb') as f:
-    request = requests.get(unraisablehook)
+    request = requests.get(url)
     f.write(request.content)
 
   with zipfile.ZipFile(data_path / f'{data_folder_name}.zip', 'r') as zip_ref:
