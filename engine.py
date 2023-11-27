@@ -4,11 +4,13 @@ from typing import List, Dict, Tuple
 import torch
 from torch import nn
 
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
 def train_step(dataloader: torch.utils.data.DataLoader, 
                loss_fn: torch.nn.Module,
                optimizer: torch.optim.Optimizer,
                model: torch.nn.Module,
-               device: torch.device,
+               device: torch.device = device,
                ):
   """ Train a PyTorch model for a single epoch.
   Args:
@@ -48,7 +50,7 @@ def train_step(dataloader: torch.utils.data.DataLoader,
 def test_step(model: torch.nn.Module,
                dataloader: torch.utils.data.DataLoader,
                loss_fn: torch.nn.Module,
-               device: torch.device):
+               device: torch.device = device):
   """ Test a PyTorch model for a single epoch.
   Args:
     model: A PyTorch model to be tested.
