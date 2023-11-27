@@ -8,7 +8,7 @@ def train_step(dataloader: torch.utils.data.DataLoader,
                loss_fn: torch.nn.Module,
                optimizer: torch.optim.Optimizer,
                model: torch.nn.Module,
-               device: torch.device = 'cpu'
+               device: torch.device,
                ):
   """ Train a PyTorch model for a single epoch.
   Args:
@@ -48,7 +48,7 @@ def train_step(dataloader: torch.utils.data.DataLoader,
 def test_step(model: torch.nn.Module,
                dataloader: torch.utils.data.DataLoader,
                loss_fn: torch.nn.Module,
-               device: torch.device = 'cpu'):
+               device: torch.device):
   """ Test a PyTorch model for a single epoch.
   Args:
     model: A PyTorch model to be tested.
@@ -84,9 +84,10 @@ def train(model: torch.nn.Module,
           train_dataloader: torch.utils.data.DataLoader,
           test_dataloader: torch.utils.data.DataLoader,
           optimizer: torch.optim.Optimizer,
+          device: torch.device,
           loss_fn: torch.nn.Module = nn.CrossEntropyLoss(),
           epochs: int = 5,
-          device: torch.device = 'cpu'
+  
           ):
   """ Train and test a PyTorch model for a given number of epochs.
   Args:
