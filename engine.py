@@ -112,8 +112,8 @@ def train(model: torch.nn.Module,
             "test_acc": [],
            }
   for epoch in tqdm(range(epochs)):
-    train_loss, train_acc = train_step(train_dataloader, loss_fn, optimizer, model)
-    test_loss, test_acc = test_step(model, test_dataloader, loss_fn)
+    train_loss, train_acc = train_step(train_dataloader, loss_fn, optimizer, model,device)
+    test_loss, test_acc = test_step(model, test_dataloader, loss_fn, device)
 
     print(f'Epoch: {epoch} | Train loss: {train_loss:.4f} Train acc: {train_acc:.4f} | Test loss: {test_loss:.4f} | Test acc: {test_acc:.4f}')
 
